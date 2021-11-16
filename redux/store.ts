@@ -30,7 +30,7 @@ export const makeStore = (context: Context) => {
     };
     const persistedReducer = persistReducer(persistConfig, rootReducer);
     const store = makeConfiguredStore(persistedReducer);
-    store.__persistor = persistStore(store); // Nasty hack
+    // store.__persistor = persistStore(store); // Nasty hack
     (store as SagaStore).sagaTask = sagaMiddleware.run(rootSaga);
 
     return store;
