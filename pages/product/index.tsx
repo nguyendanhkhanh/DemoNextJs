@@ -34,6 +34,31 @@ export const getStaticProps: GetStaticProps<Props> = async (context: GetStaticPr
   const newsRes: any = await fetch(`https://js-post-api.herokuapp.com/api/posts?_page=1`)
   const data = await newsRes.json()
 
+  const myHeaders = new Headers({
+    'Authorization': `eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0MjYzLTI1NTgiLCJpYXQiOjE2MzY1NjEyOTEsImV4cCI6MTYzNzE2NjA5MX0.vfhorM4QYafm9ZCRMdxJGVrjdh4fvlf8EXN13JS3gfW8tKwpSpgmkILi1qeFtJGMSfzb5YtaOFSY1Fm_6QzVDQ`,
+    'Content-Type': 'application/json'
+  });
+
+  const myParams = {
+    company: "",
+    created_date: "",
+    drug_barcode: "",
+    drug_group: "",
+    drug_kind: "",
+    drug_name: "",
+    sort_field: "",
+    sort_type: "",
+    status: ""
+  }
+  const resProduct: any = await fetch(`https://api-nhathuoc.medlink.vn/api/product/list?page=1&size=20`, {
+    headers: myHeaders,
+    method: 'POST',
+    body: JSON.stringify(myParams)
+  })
+  const data2 = await resProduct.json()
+
+  console.log('keytest', data2)
+
   return {
     props: {
       products: data.data.map((item: any) => (
