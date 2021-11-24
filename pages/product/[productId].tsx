@@ -50,6 +50,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context: GetStaticPr
   return {
     props: {
       product: data
-    }
+    },
+    revalidate: 3600
   }
 }
