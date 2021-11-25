@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from '../../styles/main-layout.module.scss'
 
 interface Props {
   children: any
@@ -7,7 +8,7 @@ interface Props {
 const HomeLayout = (props: Props) =>  {
   const {children} = props
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Main Layout</h1>
       <div>{children}</div>
     </div>
