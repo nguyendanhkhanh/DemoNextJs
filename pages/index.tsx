@@ -1,6 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
-export default function Home() {
+import HomeLayout from '../components/Layout/HomeLayout'
+import { NextPageWithLayout } from '../model'
+
+const Home: NextPageWithLayout = () => {
   return (
     <div className="container">
       <Head>
@@ -208,3 +211,7 @@ export default function Home() {
     </div>
   )
 }
+
+Home.Layout = HomeLayout
+
+export default Home
