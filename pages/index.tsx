@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import HomeLayout from '../components/Layout/HomeLayout'
 import { NextPageWithLayout } from '../model'
+import Image from 'next/image'
 
 const Home: NextPageWithLayout = () => {
   return (
@@ -20,6 +21,12 @@ const Home: NextPageWithLayout = () => {
         <p className="description">
           Get started by editing <code>pages/index.js</code>
         </p>
+
+        <Image 
+          src="https://www.educative.io/v2api/editorpage/6452289848475648/image/5294398307303424"
+          width={1000}
+          height={500}
+        />
 
         <div className="grid">
           <a href="https://nextjs.org/docs" className="card">
