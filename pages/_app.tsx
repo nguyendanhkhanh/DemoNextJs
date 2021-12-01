@@ -1,15 +1,31 @@
 // import App from "next/app";
 import EmptyLayout from '../components/Layout/EmptyLayout'
 import { AppPropsWithLayout } from '../model'
+import '../styles/globals.css'
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { CacheProvider, EmotionCache } from '@emotion/react';
+import { createEmotionCache, theme } from '../utils';
 
-function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+const clientSideEmotionCache = createEmotionCache()
+
+
+function MyApp(props: AppPropsWithLayout) {
+
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
 
   const Layout = Component.Layout ?? EmptyLayout
 
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <CacheProvider value={emotionCache}>
+      <ThemeProvider theme={theme} >
+        <CssBaseline />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
+    </CacheProvider>
+
   )
 }
 

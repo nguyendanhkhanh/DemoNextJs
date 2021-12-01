@@ -9,8 +9,8 @@ const Home: NextPageWithLayout = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Medlink</title>
+        <link rel="icon" href="/images/logo1.png" />
       </Head>
 
       <main>
@@ -70,20 +70,6 @@ const Home: NextPageWithLayout = () => {
           <img src="/vercel.svg" alt="Vercel" className="logo" />
         </a>
       </footer>
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
     </div>
   )
 }
