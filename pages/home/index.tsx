@@ -2,19 +2,18 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import { NextPageWithLayout } from '../../model'
-import styles from '../../styles/home.module.scss'
 import MainLayout from '../../components/Layout/MainLayout'
 
 const Home: NextPageWithLayout = () => {
   return (
-    <div className={styles.container}>
+    <div className="container">
       <Head>
         <title>Medlink</title>
         <link rel="icon" href="/images/logo1.png" />
       </Head>
 
       <main>
-        <h1 className={styles.title}>
+        <h1 className="title">
           Link to {' '}
           <Link href="/map"> Map</Link>
         </h1>
