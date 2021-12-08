@@ -7,9 +7,15 @@ module.exports = withSass({
 })
 
 module.exports = {
-  webpack: (config, options) => {
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      // don't resolve 'fs' module on the client to prevent this error on build --> Error: Can't resolve 'fs'
+      config.resolve.fallback = {
+        fs: false
+      }
+    }
 
-    return config
+    return config;
   },
 
   images: {
@@ -18,7 +24,4 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
-  assetPrefix: process.env.ASSET_PREFIX,
-  imagePath: `${process.env.ASSET_PREFIX}/public/images`,
-
 }

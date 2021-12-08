@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
-import imagePath from "../../next.config"
-import styles from "../../styles/Header.module.scss"
+import { imagePath } from '../../config'
+// import styles from "../../styles/Header.module.scss"
 import NavbarHome from '../NavbarHome'
 
 interface Props {
@@ -59,38 +59,34 @@ const Header = (props: Props) => {
         />
 
         <script
-          type="text/javascript"
+          // type="text/javascript"
           src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
         />
         <script
-          type="text/javascript"
+          // type="text/javascript"
           src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         />
         <script
-          type="text/javascript"
+          // type="text/javascript"
           src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"
         />
         <link
-          rel="stylesheet"
           href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
           crossOrigin="anonymous"
         />
         <script src="https://kit.fontawesome.com/1d7f79daa8.js"></script>
         <link
-          rel="stylesheet"
-          type="text/css"
+          // type="text/css"
           charSet="UTF-8"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
         />
         <link
-          rel="stylesheet"
-          type="text/css"
+          // type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
         />
         <link
           href="https://fonts.googleapis.com/css?family=Nunito&display=swap"
-          rel="stylesheet"
         ></link>
         <script
           src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -100,16 +96,16 @@ const Header = (props: Props) => {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js" />
 
         <script
-          type="text/javascript"
-          src="./../static/javascripts/click.js"
+          // type="text/javascript"
+          // src="./../static/javascripts/click.js"
         />
 
         <link rel="icon" href={`${imagePath}/logo1.jpg`} />
       </Head>
 
       <div>
-        <NavbarHome medicine={medicine} />
-        <div className={`${styles.appBody} ${styles.hasHeader}`}>
+        <NavbarHome medicine={medicine} productList={[]}/>
+        <div >
           {header ?? ""}
           <main className="main">
             <div className="content">{children}</div>
@@ -117,7 +113,7 @@ const Header = (props: Props) => {
         </div>
       </div>
       
-      <div id="loading-page"></div>
+      <div ></div>
         {!loaded && (
           <div
             id="loading-start"

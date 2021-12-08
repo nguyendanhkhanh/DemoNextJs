@@ -1,7 +1,7 @@
 import { UserAgent, UserAgentProvider } from '@quentin-sommer/react-useragent'
 import Link from 'next/link'
 import React, { Fragment, useState } from 'react'
-import imagePath from "../../next.config"
+import { imagePath } from '../../config'
 
 interface Props {
   medicine: boolean
@@ -9,20 +9,54 @@ interface Props {
   logged?: boolean
   name?: string
   login?: string
-  // productList: 
+  productList?: any[]
   language?: string
   // t: Function;
   // setLanguage: Function;
+  product?: any
 }
 
 function NavbarHome(props: Props) {
 
-  const { medicine, logged, name, login } = props
+  const { medicine, logged, name, login, product, productList } = props
 
   const [top, setTop] = useState(0)
   const [opacity, setOpacity] = useState(false)
+  const [openMenu, setOpenMenu] = useState(false)
 
-  const   renderDropdownMenu = () => {
+  const toggleMenu = () => {
+    setOpenMenu(!openMenu)
+  };
+
+  const sum = (array, key) => {
+    return array.reduce((a, b) => a + b[key], 0);
+  };
+
+  const renderCart = () => {
+    return (
+      medicine && (
+        <Link href="cart">
+          <a className="nav-link" aria-haspopup="true" aria-expanded="false">
+            <div className="position-relative">
+              <img
+                className="icon"
+                src={`${imagePath}/icon-cart.svg`}
+              />
+              <div
+                className="badge anim-cart"
+                style={{ opacity: productList.length == 0 ? 0 : 1 }}
+              >
+                {/* {productList.length} */}
+                {sum(productList, "quantity")}
+              </div>
+            </div>
+          </a>
+        </Link>
+      )
+    );
+  };
+
+  const renderDropdownMenu = () => {
     return (
       <div className="menu-container">
         {this.userProfileMenu().map((item, index) => {
@@ -54,7 +88,7 @@ function NavbarHome(props: Props) {
       (!logged ? (
         <li className="nav-item">
           <Link href="/login">
-            <a className="nav-link">{}</a>
+            <a className="nav-link">{ }</a>
           </Link>
         </li>
       ) : (
@@ -71,7 +105,7 @@ function NavbarHome(props: Props) {
                 className="icon nav-avatar"
                 src={`${imagePath}/icon_avatar.png`}
               />
-              <span className="nav-name">{}</span>
+              <span className="nav-name">{ }</span>
             </div>
           </div>
           <div
@@ -107,34 +141,34 @@ function NavbarHome(props: Props) {
     >
       <div className="container">
         <div className="d-flex align-items-center logoBox">
-          <Link href="/">
-            <UserAgentProvider ua={window.navigator.userAgent}>
-              <UserAgent computer>
-                <Link href="/">
-                  <img
-                    src={`${imagePath}/logo1.png`}
-                    alt="Medlink logo"
-                    srcSet={`${imagePath}/medlink-logo@2x.png 2x, ${imagePath}/medlink-logo@3x.png 3x`}
-                  />
-                </Link>
-              </UserAgent>
-              <UserAgent mobile>
-                <Link href="/">
-                  <img
-                    src={`${imagePath}/logo1.png`}
-                    alt="Medlink logo"
-                  />
-                </Link>
-              </UserAgent>
+          <Link href="/1">
+            <UserAgentProvider ua="">
+            <UserAgent computer>
+              <Link href="/2">
+                <img
+                  src={`${imagePath}/medlink-logo.png`}
+                  alt="Medlink logo"
+                  srcSet={`${imagePath}/medlink-logo@2x.png 2x, ${imagePath}/medlink-logo@3x.png 3x`}
+                />
+              </Link>
+            </UserAgent>
+            <UserAgent mobile>
+              <Link href="/3">
+                <img
+                  src={`${imagePath}/medlink-logo.png`}
+                  alt="Medlink logo"
+                />
+              </Link>
+            </UserAgent>
             </UserAgentProvider>
           </Link>
-          {/* <div className="d-md-block d-lg-none text-logo">Medlink</div> */}
+          <div className="d-md-block d-lg-none text-logo">Medlink</div>
         </div>
         <div className="d-md-block d-lg-none">
           <img
             src={`${imagePath}/ic_menu.png`}
             className="icon-menu"
-            onClick={this.toggleMenu}
+            onClick={toggleMenu}
           />
         </div>
         <div className="collapse navbar-collapse list" id="navbarResponsive">
@@ -143,7 +177,7 @@ function NavbarHome(props: Props) {
               <Fragment>
                 <li className="nav-item">
                   <Link href="/nhathuoc">
-                    <a className="nav-link">{}</a>
+                    <a className="nav-link">{ }</a>
                   </Link>
                 </li>
                 <li className="nav-item  user-profile icon-item badge-show">
@@ -153,26 +187,25 @@ function NavbarHome(props: Props) {
                       aria-haspopup="true"
                       aria-expanded="false"
                     >
-                      {}
+                      { }
                     </a>
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link href="/muathuoc">
-                    <a className="nav-link">{}</a>
+                    <a className="nav-link">{ }</a>
                   </Link>
                 </li>
               </Fragment>
             )}
             {renderUserNav()}
             <li className="nav-item  user-profile icon-item badge-show">
-              {this.renderCart()}
+              {renderCart()}
             </li>
           </ul>
-          {this.renderLanguage()}
         </div>
       </div>
-      {this.renderMenuNav()}
+      {/* {renderMenuNav()} */}
     </nav>
   )
 }
