@@ -1,0 +1,38 @@
+@import "../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "variables.scss";
+
+footer {
+  background: #fff;
+  border-top: 1px solid #d8dde6;
+  padding: 50px 0;
+  .title-1 {
+    color: #1d243e;
+    font-size: 29px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  .title-2 {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #1d243e !important;
+  }
+  .info {
+    img {
+      margin-top: 5px;
+      margin-right: 10px;
+    }
+    .line{
+      margin: 10px 0;
+    }
+  }
+  .links{
+    .item{
+      margin: 10px 0;
+      cursor: pointer;
+      &:hover{
+        text-decoration: underline
+      }
+    }
+  }
+}

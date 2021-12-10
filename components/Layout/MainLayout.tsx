@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styles from '../../styles/MainLayout.module.scss'
+import Footer from '../Footer'
 import Header from '../Header'
 import Navbar from '../Navbar'
 interface Props {
@@ -36,6 +37,8 @@ const MainLayout = (props: Props) => {
           <div className="content">{children}</div>
         </main>
       </div>
+
+      <Footer />
 
       <div id="loading-page"></div>
 

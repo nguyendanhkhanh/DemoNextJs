@@ -1,0 +1,151 @@
+.common-title-section {
+  position: relative;
+  display: block;
+  text-align: center;
+  font-family: Nunito;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 50px;
+  color: #1d243e;
+  padding-bottom: 20px;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 4px;
+    background: #5ac4be;
+    border-radius: 100px;
+    bottom: 0;
+    left: calc(50% - 35px);
+  }
+  &.dash-left,
+  &.dash-left-desktop {
+    text-align: left;
+    &::after {
+      left: 0;
+    }
+  }
+  @media only screen and (max-width: $mobile_screen) {
+    font-size: 32px;
+    line-height: 40px;
+    &.dash-left-desktop {
+      text-align: center;
+      &::after {
+        left: calc(50% - 35px);
+      }
+    }
+    &.dash-left-mobile {
+      text-align: left;
+      &::after {
+        left: 0;
+      }
+    }
+  }
+}
+.common-text-large {
+  font-size: 48px;
+  line-height: 44px;
+  color: #1d243e;
+  font-family: Nunito;
+  @media only screen and (max-width: $mobile_screen) {
+    font-size: 32px;
+    line-height: 22px;
+  }
+}
+.common-text-medium {
+  font-size: 20px;
+  line-height: 26px;
+  font-family: Nunito;
+  color: #6c738d;
+  @media only screen and (max-width: $mobile_screen) {
+    font-size: 16px;
+  }
+}
+.common-input {
+  width: 100%;
+  position: relative;
+  border: 1px solid #d8dde6;
+  background: #fff;
+  height: 56px;
+  border-radius: 8px;
+  .common-input-placeholder {
+    position: absolute;
+    transition: all 0.5s;
+    top: 15px;
+    left: 25px;
+    color: #929aae;
+  }
+  .placeholder-focus {
+    font-size: 10px;
+    top: 5px;
+  }
+  select {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #1d243e;
+  }
+  input {
+    position: absolute;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    border: none;
+    height: 100%;
+    padding: 0 25px;
+    padding-top: 10px;
+    color: #1d243e;
+  }
+}
+
+.btn-hover {
+  transition: transform 0.3s;
+  &:hover {
+    transform: scale(1.08);
+  }
+}
+.btn-bg {
+  transition: background 0.3s;
+  &:hover {
+    background: rgb(36, 153, 147) !important;
+  }
+}
+.btn-link {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+a,
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Nunito !important;
+}
+
+#loading-page {
+  position: fixed;
+  width: 80%;
+  height: 0;
+  top: 0;
+  left: 0;
+  background: #5ac4be;
+  z-index: 1000;
+}
+
+.animate-section{
+  opacity: 0;
+  padding-top: 50%;
+  transition: all 0.6s;
+  &.active{
+    opacity: 1;
+    padding-top: 0;
+  }
+}
