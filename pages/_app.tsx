@@ -2,6 +2,7 @@
 import EmptyLayout from '../components/Layout/EmptyLayout'
 import { AppPropsWithLayout } from '../model'
 import '../styles/globals.css'
+import '../styles/index.scss'
 
 function MyApp(props: AppPropsWithLayout) {
 
@@ -11,7 +12,7 @@ function MyApp(props: AppPropsWithLayout) {
 
   return (
     <Layout>
-      <Component {...pageProps} />
+      <Component {...pageProps} /> 
     </Layout>
   )
 }

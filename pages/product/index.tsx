@@ -35,7 +35,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context: GetStaticPr
   const data = await newsRes.json()
 
   const myHeaders = new Headers({
-    'Authorization': `eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0MjYzLTI1NTgiLCJpYXQiOjE2MzY1NjEyOTEsImV4cCI6MTYzNzE2NjA5MX0.vfhorM4QYafm9ZCRMdxJGVrjdh4fvlf8EXN13JS3gfW8tKwpSpgmkILi1qeFtJGMSfzb5YtaOFSY1Fm_6QzVDQ`,
+    'Authorization': `eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0MjYzLTI1NTgiLCJpYXQiOjE2MzkwNDYyNDAsImV4cCI6MTYzOTY1MTA0MH0.uINuXqy4zpS0f7YnM46WNGGfVnaMM-A8Tq7ohgFu7W1ZChGownHg0RaSQLsCjAdXk7uWSO643ybHaE4LUTrEIw`,
     'Content-Type': 'application/json'
   });
 
