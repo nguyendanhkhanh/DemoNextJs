@@ -1,8 +1,6 @@
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 import { imagePath } from '../../config'
-// import styles from "../../styles/Header.module.scss"
-import NavbarHome from '../NavbarHome'
 
 interface Props {
    title: string

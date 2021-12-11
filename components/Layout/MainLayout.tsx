@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from '../../styles/MainLayout.module.scss'
+import BottomFooter from '../BottomFooter'
 import Footer from '../Footer'
 import Header from '../Header'
 import Navbar from '../Navbar'
@@ -16,7 +16,7 @@ const MainLayout = (props: Props) => {
   const [logged, setLogged] = useState(false)
 
   return (
-    <div className={`${styles.container}`}>
+    <React.Fragment>
       <Header title="Home" />
       <div id="root">
         <div className={`app`}>
@@ -30,7 +30,7 @@ const MainLayout = (props: Props) => {
         </div>
       </div>
 
-      
+
       <div className={`app-body ${header ? "has-header" : ""}`}>
         {header && header}
         <main className="main">
@@ -38,9 +38,12 @@ const MainLayout = (props: Props) => {
         </main>
       </div>
 
-      <Footer />
+      <div>
+        <Footer />
+        <BottomFooter />
+      </div>
 
-      <div id="loading-page"></div>
+      {/* <div id="loading-page"></div>
 
       {/* {!loaded && (
           <div
@@ -55,8 +58,8 @@ const MainLayout = (props: Props) => {
               left: 0
             }}
           ></div>
-        )} */}
-    </div>
+          )} */}
+    </React.Fragment>
   )
 }
 

@@ -58,15 +58,15 @@ const list2 = [
     title: "Điều khoản",
     data: [
       {
-        text: "terms_of_use",
+        text: "Điều khoản sử dụng",
         url: "/company/order-policy"
       },
       {
-        text: "question",
+        text: "Câu hỏi thường gặp",
         url: "/company/order-policy"
       },
       {
-        text: "delivery_policy",
+        text: "Chính sách giao nhận",
         url: "/company/security"
       }
     ]

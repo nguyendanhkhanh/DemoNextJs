@@ -1,0 +1,10 @@
+@import "../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "variables.scss";
+
+.bottomFooter {
+  background: #5AC4BE;
+  .text{
+    color: #fff !important;
+    padding: 15px 0;
+  }
+}
