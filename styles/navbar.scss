@@ -27,7 +27,6 @@ nav.navbar {
   box-shadow: 0px 0px 6px rgba(108, 115, 141, 0.24);
   display: flex;
   justify-content: space-between;
-  color: red;
   .navbar-brand {
     padding: 0px !important;
   }
@@ -391,10 +390,11 @@ nav.navbar {
 
 .navbar-container {
   display: flex;
-  // justify-content: space-between;
-  padding-left: 100px;
+  align-items: center;
+  justify-content: center;
   .navbar-icon-medlink {
     display: flex;
-    flex: 10;
+    flex: 5;
+    margin-left: 1rem;
   }
 }

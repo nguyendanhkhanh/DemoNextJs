@@ -1,0 +1,55 @@
+.get-it {
+  background: linear-gradient(116.46deg, #5ac4be 0%, #6ae6de 100%);
+  padding: 60px 4.5rem;
+  position: relative;
+  .common-title-section {
+    color: #fff;
+  }
+  .dash-left {
+    &::after {
+      background: #05a098;
+    }
+  }
+  .common-text-medium {
+    color: #fff;
+  }
+  .list-button {
+    display: flex;
+    flex-wrap: wrap;
+    img {
+      margin: 10px 0;
+      margin-right: 20px;
+      height: 55px;
+      cursor: pointer;
+    }
+  }
+  .content-download-app {
+    display: flex;
+    flex-direction: column;
+    .common-text-medium {
+      flex: 1;
+      padding: 30px 0;
+    }
+  }
+  .bg {
+    height: 300px;
+  }
+  .bg-app {
+    position: absolute;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    width: 100%;
+    height: 350px;
+    bottom: 0;
+  }
+  @media only screen and (max-width: $mobile_screen) {
+    .bg {
+      height: 400px !important;
+    }
+    .bg-app {
+      background-position: 30vw;
+      height: 450px;
+    }
+  }
+}

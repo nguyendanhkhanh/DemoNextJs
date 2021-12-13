@@ -74,8 +74,7 @@ const Header = (props: Props) => {
       // src="./../static/javascripts/click.js"
       />
 
-      <link rel="icon" href={`${imagePath}/logo1.jpg`} />
-      {/* <style dangerouslySetInnerHTML={{ __html: Styles }} /> */}
+      <link rel="icon" href={`${imagePath}/logo1.png`} />
     </Head>
   )
 }

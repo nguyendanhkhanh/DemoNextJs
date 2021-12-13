@@ -6,7 +6,7 @@ interface Props {
 
 export default function BottomFooter(props: Props): ReactElement {
   return (
-    <div className="bottomFooter">
+    <div className="bottom-footer">
       <div className="container">
         <div className="d-flex justify-content-between">
           <div className="text common-text-medium">{"© 2019 Bản quyền thuộc về Medlink"}</div>

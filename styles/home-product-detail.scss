@@ -1,0 +1,50 @@
+.home-product-detail {
+  padding: 50px 4.5rem;
+  * {
+    font-family: Nunito;
+  }
+  .common-title-section {
+    margin-bottom: 20px;
+  }
+  .item {
+    padding: 20px 0;
+    margin-bottom: 20px;
+    img {
+      width: 100%;
+    }
+    .hide-left {
+      display: none;
+    }
+    .hide-right {
+      display: none;
+    }
+    .content {
+      padding-left: 15px;
+    }
+    .title {
+      font-size: 29px;
+      color: #1d243e;
+      margin: 20px 0;
+    }
+    .name {
+      color: #5ac4be !important;
+    }
+    .btn-view {
+      color: #5ac4be !important;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+  }
+  .navigation {
+    display: none;
+  }
+  @media only screen and (max-width: $mobile_screen) {
+    .inactive {
+      display: none;
+    }
+    .navigation {
+      display: flex !important;
+      justify-content: center;
+    }
+  }
+}

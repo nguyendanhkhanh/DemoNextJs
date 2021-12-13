@@ -2,8 +2,9 @@
 @import "variables.scss";
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap");
 
-.bottomFooter {
+.bottom-footer {
   background: #5AC4BE;
+  padding: 0 4.5rem;
   .text{
     color: #fff !important;
     padding: 15px 0;

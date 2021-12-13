@@ -1,76 +1,39 @@
-import Head from 'next/head'
-import Link from 'next/link'
 import { NextPageWithLayout } from '../model'
-import Image from 'next/image'
 import MainLayout from '../components/Layout/MainLayout'
-import styles from '../styles/index.module.scss'
 import { imagePath } from '../config'
+import React from 'react'
+import FreeTrailer from '../components/FreeTrailer'
+import withAnimate from '../common/withAnimate'
+import HomeProducts from '../components/HomeProduct'
+import HomeAboutUs from '../components/HomeAboutUs'
+import HomeProductDetail from '../components/HomeProductDetail'
+import GetIt from '../components/GetIt'
+import HomeAchievements from '../components/HomeAchievements'
+import HomePartner from '../components/HomePartner'
+import HomeNews from '../components/HomeNews'
+import HomeContact from '../components/HomeContact'
 
 const Home: NextPageWithLayout = () => {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Medlink</title>
-        <link rel="icon" href={`${imagePath}/logo1.png`} />
-      </Head>
+    <div className="home-page">
+      <FreeTrailer
+        data={{
+          link: "https://nhathuoc.medlink.vn/auth/register",
+          title: "Giải Pháp Toàn Diện Cho Cộng Đồng Dược",
+          content: "Chúng tôi cung cấp giải pháp toàn diện cho Nhà Thuốc và Công Ty Dược của bạn, cam kết mang lại những sản phẩm tốt nhất và nâng cao giá trị cho cộng đồng Dược Việt Nam.",
+          background: "",
+          mainBackground: `${imagePath}/backgroundHomePageSection.png`
+        }}
+      />
+      {withAnimate(<HomeProducts />)}
+      {withAnimate(<HomeAboutUs />)}
+      {withAnimate(<HomeProductDetail />)}
+      {withAnimate(<GetIt />)}
+      {withAnimate(<HomeAchievements />)}
+      {withAnimate(<HomePartner />)}
+      {withAnimate(<HomeNews />)}
+      {withAnimate(<HomeContact />)}
 
-      <main>
-        <h1 className={styles.title}>
-          Link to {' '}
-          <Link href="/map">Map</Link>
-        </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <Image
-          src="https://www.educative.io/v2api/editorpage/6452289848475648/image/5294398307303424"
-          width={1000}
-          height={500}
-        />
-
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className="logo" />
-        </a>
-      </footer>
     </div>
   )
 }
