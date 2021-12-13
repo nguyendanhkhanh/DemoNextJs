@@ -29,7 +29,7 @@ function Navbar(props: Props) {
   const { medicine, logged, name, login, product, productList } = props
 
   const [top, setTop] = useState(0)
-  const [opacity, setOpacity] = useState(false)
+  const [opacity, setOpacity] = useState(true)
   const [openMenu, setOpenMenu] = useState(false)
   const [prevScrollpos, setPrevScrollpos] = useState(0)
   const [mobileCollapseShow, setMobileCollapseShow] = useState(false)
@@ -309,7 +309,7 @@ function Navbar(props: Props) {
 
   return (
     <nav
-      className={` fixed-top navbar-expand-lg navbar-light bg-light navbar ${opacity ? "opacity" : ""} `}
+      className={` fixed-top navbar-expand-lg navbar-light navbar ${opacity && "opacity"} `}
       style={{ top }}
     >
       <div className="container navbar-container">
@@ -348,9 +348,11 @@ function Navbar(props: Props) {
           <ul className="navbar-nav ml-auto" style={{ paddingRight: 30 }}>
             <Fragment>
               <li className="nav-item">
-                <a className="nav-link" href={"https://nhathuoc.medlink.vn"} target="_blank">
-                  Pharmacy Management
-                </a>
+                <Link href="https://nhathuoc.medlink.vn">
+                  <a className="nav-link">
+                    Pharmacy Management
+                  </a>
+                </Link>
               </li>
               <li className="nav-item user-profile icon-item badge-show">
                 <Link href="/congtyduoc">

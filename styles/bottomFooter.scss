@@ -1,10 +1,12 @@
 @import "../node_modules/bootstrap/scss/mixins/breakpoints";
 @import "variables.scss";
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap");
 
 .bottomFooter {
   background: #5AC4BE;
   .text{
     color: #fff !important;
     padding: 15px 0;
+    font-family: "Nunito Sans", sans-serif;
   }
 }
