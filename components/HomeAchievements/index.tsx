@@ -1,31 +1,32 @@
 import React, { useState } from "react";
+import useTrans from "../../common/useTrans";
 import { imagePath } from "../../config";
 import NavigationArrow from "../NavigationArrow";
 // import NavigationArrow from "../NavigationArrow";
 // import { withTranslation } from "../../i18n";
 
-const achievements = [
-  {
-    name: "Quán quân Techsauce Global Pitch Competition 2019 diễn ra tại Thái Lan",
-    image: `${imagePath}/techsauce-2019.png`
-  },
-  {
-    name:
-      "Quán quân Cuộc thi Khởi nghiệp toàn cầu của người Việt - Viet Challenge diễn ra tại Mỹ",
-    image: `${imagePath}/vietchallenge.jpg`
-  },
-  {
-    name: "Top 3 Techfest 2018- Cuộc thi khởi nghiệp toàn quốc năm 2018",
-    image: `${imagePath}/techfest.jpg`
-  },
-];
-
 function HomeAchievements(props) {
   const [index, setIndex] = useState(0);
+  const trans = useTrans().landingPage
+
+  const achievements = [
+    {
+      name: trans.achievement_2,
+      image: `${imagePath}/techsauce-2019.png`
+    },
+    {
+      name: trans.achievement_3,
+      image: `${imagePath}/vietchallenge.jpg`
+    },
+    {
+      name: trans.achievement_1,
+      image: `${imagePath}/techfest.jpg`
+    },
+  ];
 
   return (
     <div className="home-achievements">
-      <div className="common-title-section">{"Thành tựu"}</div>
+      <div className="common-title-section">{trans.achievement}</div>
       <div className="container">
         <div className="row">
           <div className="col-md-8 left">

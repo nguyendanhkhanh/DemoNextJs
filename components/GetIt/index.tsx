@@ -1,8 +1,10 @@
 import React from "react";
+import useTrans from "../../common/useTrans";
 import { imagePath } from "../../config";
 // import { withTranslation } from "./../../i18n";
 
 function GetIt(props) {
+  const trans = useTrans().landingPage
   return (
     <div className="get-it">
       <div
@@ -15,12 +17,12 @@ function GetIt(props) {
         <div className="row">
           <div className="col-md-6 content-download-app">
             <div className="common-title-section dash-left">
-              Sử dụng mọi lúc, mọi nơi
+              {trans.use_anytime}
             </div>
             <div className="common-text-medium">
-              Phần mềm đã liên thông với Cục dược Quốc Gia.
+              {trans.text_download_1}
               <br /> <br />
-              Quản lý và bán hàng chưa bao giờ đơn giản đến thế!
+              {trans.text_download_2}
             </div>
             <div className="list-button">
               <a

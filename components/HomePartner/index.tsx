@@ -1,4 +1,5 @@
 import React from "react";
+import useTrans from "../../common/useTrans";
 import { imagePath } from "../../config";
 // import { withTranslation } from "../../i18n";
 
@@ -16,10 +17,11 @@ const images = [
 ];
 
 function HomePartner(props: Props) {
+  const trans = useTrans().landingPage
   return (
     <div className="home-partner">
       <div className="container">
-        <div className="common-title-section">{"Đối tác đồng hành"}</div>
+        <div className="common-title-section">{trans.our_partner}</div>
         <div className="row">
           {images.map((e, i) => (
             <div key={i} className="col-6 col-md-2">

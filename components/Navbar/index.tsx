@@ -1,13 +1,11 @@
 import React, { Fragment, useState } from "react";
-// import { i18n, withTranslation } from "../../i18n";
-import { connect } from "react-redux";
 // import { STATE_LANGUAGE } from "../../redux/types";
 import { UserAgentProvider, UserAgent } from "@quentin-sommer/react-useragent";
 import { Menu, Dropdown, Button } from "antd";
 import { imagePath } from "../../config";
 import Link from "next/link";
 import { DownOutlined } from "@ant-design/icons";
-// import $ from "jquery";
+import useTrans from "../../common/useTrans";
 var VNco = `${imagePath}/vietnam.svg`;
 var ENco = `${imagePath}/usa.svg`;
 
@@ -19,7 +17,6 @@ type Props = {
   login?: string
   productList?: any[]
   language?: string
-  // t: Function;
   // setLanguage: Function;
   product?: any
 };
@@ -27,6 +24,7 @@ type Props = {
 function Navbar(props: Props) {
 
   const { medicine, logged, name, login, product, productList } = props
+  const trans = useTrans().navbar
 
   const [top, setTop] = useState(0)
   const [opacity, setOpacity] = useState(true)
@@ -82,21 +80,21 @@ function Navbar(props: Props) {
     return [
       {
         icon: `${imagePath}/icon-list.svg`,
-        title: "Manage Order",
+        title: trans.manage_order,
         href: "",
         hasCadet: true,
         // onClick: () => Router.pushRoute("/order-management")
       },
       {
         icon: `${imagePath}/icon-user.svg`,
-        title: "Tài khoản",
+        title: trans.user_account,
         href: "",
         hasCadet: false,
         // onClick: () => Router.pushRoute("/user-info")
       },
       {
         icon: `${imagePath}/icon-exit.svg`,
-        title: "Đăng xuất",
+        title: trans.log_out,
         href: "",
         hasCadet: false,
         onClick: logout
@@ -119,15 +117,15 @@ function Navbar(props: Props) {
   const renderMenuNav = () => {
     const dataMenu = [
       {
-        name: "Pharmacy Management",
+        name: trans.pharmacy_management,
         url: "/nhathuoc"
       },
       {
-        name: "Pharmaceutical Company",
+        name: trans.company,
         url: "/congtyduoc"
       },
       {
-        name: "Medicine",
+        name: trans.medicine,
         url: "/muathuoc"
       }
     ];
@@ -262,7 +260,7 @@ function Navbar(props: Props) {
       (!logged ? (
         <li className="nav-item">
           <Link href="/login">
-            <a className="nav-link">{"Login or Register"}</a>
+            <a className="nav-link">{trans.login_or_register}</a>
           </Link>
         </li>
       ) : (
@@ -350,7 +348,7 @@ function Navbar(props: Props) {
               <li className="nav-item">
                 <Link href="https://nhathuoc.medlink.vn">
                   <a className="nav-link">
-                    Pharmacy Management
+                    {trans.pharmacy_management}
                   </a>
                 </Link>
               </li>
@@ -361,14 +359,14 @@ function Navbar(props: Props) {
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    Pharmaceutical Company
+                    {trans.company}
                   </a>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link href="/muathuoc">
                   <a className="nav-link">
-                    Medicine
+                    {trans.medicine}
                   </a>
                 </Link>
               </li>

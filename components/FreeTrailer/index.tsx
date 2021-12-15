@@ -1,4 +1,5 @@
 import React from "react";
+import useTrans from "../../common/useTrans";
 import { imagePath } from "../../config";
 // import { withTranslation } from "./../../i18n";
 
@@ -15,7 +16,7 @@ type TypeFreeTrailer = {
 
 function FreeTrailer(props: TypeFreeTrailer) {
   const { data } = props;
-
+  const trans = useTrans().landingPage
   return (
     <div
       className="free-trailer"
@@ -58,7 +59,7 @@ function FreeTrailer(props: TypeFreeTrailer) {
               target={data.link ? "_blank" : ""}
             >
               {/* {t("free-trailer")} */}
-              Dùng thử ngay
+              {trans.free_trailer}
             </a>
             <div
               className="free-30-day"
@@ -68,7 +69,7 @@ function FreeTrailer(props: TypeFreeTrailer) {
                 <img src={`${imagePath}/ic_checked.png`} />
               )}
               {/* {t("free-trailer-30-day")} */}
-              Miễn phí dùng thử 14 ngày
+              {trans.free_trailer_30_day}
             </div>
           </div>
           {data.image && (

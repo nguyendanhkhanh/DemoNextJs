@@ -4,8 +4,10 @@ import { Input } from "../RegisterTry";
 // import { withTranslation } from "../../i18n";
 // import { registerTry } from "../../api";
 import swal from "sweetalert";
+import useTrans from "../../common/useTrans";
 
 function HomeContact(props) {
+  const trans = useTrans().landingPage
   const [form, setForm] = useState({
     service: "Nhà thuốc",
     fullName: "",
@@ -52,22 +54,22 @@ function HomeContact(props) {
         <div className="row">
           <div className="col-md-5 d-flex flex-column justify-content-center left">
             <div className="common-title-section dash-left">
-              Nền tảng kết nối cộng đồng Dược
+              {trans.contact_title}
             </div>
             <br />
-            <div className="common-text-medium">Liên hệ ngay với chúng tôi để nhận được tư vấn chi tiết về dịch vụ.</div>
+            <div className="common-text-medium">{trans.contact_content}</div>
           </div>
           <div className="col-md-7 form-contact d-flex flex-column align-items-center" id="form-register">
-            <div className="form-title">Đăng ký ngay để được tư vấn</div>
+            <div className="form-title">{trans.register_now}</div>
             <div className="input common-input" style={{ paddingLeft: 20 }}>
               <select
                 onChange={e => {
                   updateForm({ service: e.target.value });
                 }}
               >
-                <option value="Nhà thuốc">Quản lý nhà thuốc</option>
-                <option value="Công ty dược">Đăng ký ngay để được tư vấn</option>
-                <option value="Người dùng mua thuốc">Người dùng mua thuốc</option>
+                <option value="Nhà thuốc">{trans.title_product_1}</option>
+                <option value="Công ty dược">{trans.title_product_2}</option>
+                <option value="Người dùng mua thuốc">{trans.person_buy_drug}</option>
               </select>
             </div>
             <Input
@@ -76,7 +78,7 @@ function HomeContact(props) {
               onChange={v => {
                 updateForm({ fullName: v });
               }}
-              placeholder={"Họ tên"}
+              placeholder={trans.full_name}
             />
             <Input
               className="input"
@@ -92,13 +94,13 @@ function HomeContact(props) {
               onChange={v => {
                 updateForm({ phoneNumber: v });
               }}
-              placeholder={"Số điện thoại"}
+              placeholder={trans.phone_number}
             />
             <div className="btn common-text-medium btn-hover btn-bg" onClick={onRegister}>
               {loading ? (
                 <i className="fas fa-circle-notch fa-spin"></i>
               ) : (
-                "Gửi thông tin"
+                trans.send_information
               )}
             </div>
           </div>

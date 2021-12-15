@@ -3,25 +3,27 @@ import React, { useState } from "react";
 import { Modal, Button } from "antd";
 import { imagePath } from "../../config";
 import { CloseCircleFilled, CloseOutlined } from "@ant-design/icons";
+import useTrans from "../../common/useTrans";
 
 function HomeAboutUs(props) {
   const [visible, setVisible] = useState(false);
+  const trans = useTrans().landingPage
   return (
     <div className="home-about-us">
       <div className="container">
-        <div className="common-title-section">Về chúng tôi</div>
+        <div className="common-title-section">{trans.about_us}</div>
         <div className="row">
           <div className="col-md-6 img">
             <img src={`${imagePath}/img_about_us.png`} />
           </div>
           <div className="col-md-6 d-flex justify-content-center flex-column">
-            <div className="common-text-medium">Medlink là nền tảng B2B đầu tiên tại Việt Nam giúp kết nối công ty dược, nhà thuốc và người tiêu dùng nhằm cắt giảm chi phí kinh doanh tối đa trong khâu phân phối. Medlink cung cấp thông tin về các đơn hàng cần được giao được đưa lên hệ thống cho các công ty dược, nhà phân phối dược phẩm.</div>
+            <div className="common-text-medium">{trans.about_us_content}</div>
             <div
               className="d-flex align-items-center wrap-play btn-hover"
               onClick={() => setVisible(true)}
             >
               <img src={`${imagePath}/ic_play.png`} />
-              <div className="play common-text-medium">Xem video giới thiệu</div>
+              <div className="play common-text-medium">{trans.watch_video}</div>
             </div>
           </div>
         </div>

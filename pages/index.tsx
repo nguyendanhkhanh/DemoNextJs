@@ -12,15 +12,17 @@ import HomeAchievements from '../components/HomeAchievements'
 import HomePartner from '../components/HomePartner'
 import HomeNews from '../components/HomeNews'
 import HomeContact from '../components/HomeContact'
+import useTrans from '../common/useTrans'
 
 const Home: NextPageWithLayout = () => {
+  const trans = useTrans().landingPage
   return (
     <div className="home-page">
       <FreeTrailer
         data={{
           link: "https://nhathuoc.medlink.vn/auth/register",
-          title: "Giải Pháp Toàn Diện Cho Cộng Đồng Dược",
-          content: "Chúng tôi cung cấp giải pháp toàn diện cho Nhà Thuốc và Công Ty Dược của bạn, cam kết mang lại những sản phẩm tốt nhất và nâng cao giá trị cho cộng đồng Dược Việt Nam.",
+          title: trans.title_slide,
+          content: trans.content_slide,
           background: "",
           mainBackground: `${imagePath}/backgroundHomePageSection.png`
         }}

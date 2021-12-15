@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import { withTranslation } from "./../../i18n";
 // import { registerTry } from "../../api";
 import swal from "sweetalert";
+import useTrans from "../../common/useTrans";
 import { imagePath } from "../../config";
 
 type TypeRegisterTry = {
@@ -44,10 +45,11 @@ export const Input = (props: TypeInput) => {
 };
 
 function RegisterTry(props: TypeRegisterTry) {
+  const trans = useTrans().landingPage
   const {
     t,
     company,
-    title = t("register-try"),
+    title = trans.register_try,
     checkList = list.map(e => t(e)),
     service = "quản lý nhà thuốc"
   } = props;
@@ -112,7 +114,7 @@ function RegisterTry(props: TypeRegisterTry) {
           onChange={v => {
             updateForm({ companyName: v });
           }}
-          placeholder={t("companyName")}
+          placeholder={trans.companyName}
         />
         <Input
           className="mv"
@@ -120,7 +122,7 @@ function RegisterTry(props: TypeRegisterTry) {
           onChange={v => {
             updateForm({ fullName: v });
           }}
-          placeholder={t("fullName")}
+          placeholder={trans.fullName}
         />
         <Input
           className="mv"
@@ -136,13 +138,13 @@ function RegisterTry(props: TypeRegisterTry) {
           onChange={v => {
             updateForm({ phoneNumber: v });
           }}
-          placeholder={t("phoneNumber")}
+          placeholder={trans.phoneNumber}
         />
         <div className="btn-register mv btn-hover btn-bg" onClick={onRegister}>
           {loading ? (
             <i className="fas fa-circle-notch fa-spin"></i>
           ) : (
-            t("register-now")
+            trans.register_now
           )}
         </div>
       </div>
@@ -154,7 +156,7 @@ function RegisterTry(props: TypeRegisterTry) {
       <div className="container">
         <div className="common-title-section">{title}</div>
         <div className="common-text-medium text-center d-none d-sm-block free-30-d">
-          {t("30day-free-trailer")}
+          {trans.day_free_trailer_30}
         </div>
         <div className="row">
           <div className="col-md-8">{renderCheckList()}</div>
