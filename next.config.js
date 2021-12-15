@@ -26,5 +26,9 @@ module.exports = {
   },
   experimental: {
     scss: true,
-  }
+  },
+  i18n: {
+    locales: ['vi', 'en'],
+    defaultLocale: 'vi',
+  },
 }

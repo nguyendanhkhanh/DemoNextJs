@@ -221,7 +221,7 @@ function Navbar(props: Props) {
                 style={{ opacity: productList.length == 0 ? 0 : 1 }}
               >
                 {/* {productList.length} */}
-                {sum(productList, "quantity")}
+                {/* {sum(productList, "quantity")} */}
               </div>
             </div>
           </a>
