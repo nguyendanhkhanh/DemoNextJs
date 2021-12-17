@@ -413,6 +413,57 @@ function Navbar(props: Props) {
     </div>
   )
 
+  const renderHeaderExtraWeb = () => (
+    <div className="collapse navbar-collapse list header-extra-container" id="navbarResponsive">
+      <div className="left-menu">
+        <Link href="/muathuoc">
+          <a
+            className="nav-link-extra"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            {trans.products}
+          </a>
+        </Link>
+        <Link href="/tuvan">
+          <a
+            className="nav-link-extra"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            {trans.pharmacist}
+          </a>
+        </Link>
+        <Link href="/donthuoc">
+          <a
+            className="nav-link-extra"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            {trans.prescriptions}
+          </a>
+        </Link>
+      </div>
+      <div className="right-menu">
+        <Link href="/map">
+          <a
+            className="nav-link-extra"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <div className="nav-link-extra-text"> {trans.near_pharmacy} </div>
+            <Image
+              src={location}
+              alt="Picture of the author"
+              width={22}
+              height={22}
+            />
+          </a>
+        </Link>
+      </div>
+    </div>
+  )
+
   return (
     <nav
       className={` fixed-top navbar-expand-lg navbar-light navbar ${opacity && "opacity"} `}
@@ -464,54 +515,7 @@ function Navbar(props: Props) {
           {renderMenuNav()}
         </div>
 
-        <div className="collapse navbar-collapse list header-extra-container" id="navbarResponsive">
-          <div className="left-menu">
-            <Link href="/muathuoc">
-              <a
-                className="nav-link-extra"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                {trans.products}
-              </a>
-            </Link>
-            <Link href="/tuvan">
-              <a
-                className="nav-link-extra"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                {trans.pharmacist}
-              </a>
-            </Link>
-            <Link href="/donthuoc">
-              <a
-                className="nav-link-extra"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                {trans.prescriptions}
-              </a>
-            </Link>
-          </div>
-          <div className="right-menu">
-            <Link href="/map">
-              <a
-                className="nav-link-extra"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <div className="nav-link-extra-text"> {trans.near_pharmacy} </div>
-                <Image
-                  src={location}
-                  alt="Picture of the author"
-                  width={22}
-                  height={22}
-                />
-              </a>
-            </Link>
-          </div>
-        </div>
+        {router.pathname === "/" && renderHeaderExtraWeb()}
       </div>
     </nav>
 
