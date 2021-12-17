@@ -27,20 +27,15 @@
     transform: scale(0);
     transition: all 0.5s;
     opacity: 0;
-    display: flex;
-    justify-content: center;
-    align-self: center;
-
     div {
-      display: flex;
+      height: 100%;
       position: relative;
-      .icon-close-video {
-        color: white;
-        font-size: 30px;
-        font-weight: bolder;
-        height: 70%;
-        display: flex;
-        margin-left: 1rem;
+      i {
+        position: absolute;
+        color: #fff;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
       }
     }
     iframe {

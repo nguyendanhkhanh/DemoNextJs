@@ -54,7 +54,9 @@ nav.navbar {
     transition-property: all;
     transition-duration: 1s;
     transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-
+    // display: flex;
+    justify-content: flex-end;
+    padding-right: 1.5rem;
     &.hide {
       height: 0;
       max-height: 0;
@@ -250,16 +252,14 @@ nav.navbar {
   nav.navbar {
     &.opacity {
       @include media-breakpoint-up(lg) {
-        background-color: rgba(255, 255, 255, 1);
       }
     }
     &.opacity-mobile {
       @include media-breakpoint-down(md) {
-        background-color: rgba(255, 255, 255, 1);
         border-bottom: 1px solid #333;
       }
     }
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 1);
   }
 }
 @media (max-width: 920px) {
@@ -292,6 +292,7 @@ nav.navbar {
   .navbar {
     background-color: rgba(255, 255, 255, 1);
     border-bottom: 1px solid rgb(207, 207, 207);
+    padding: 0;
   }
 }
 
@@ -376,6 +377,29 @@ nav.navbar {
       }
     }
   }
+
+  .linkListCategory {
+    border-bottom: 1px solid #d8dde6;
+    margin: 15px 0;
+    .item {
+      padding: 20px 20px;
+      color: #1d243e;
+      font-family: Nunito;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      border-bottom: 1px solid #d8dde6;
+      cursor: pointer;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+    .item:hover {
+      color: white;
+      background-color: #30c3b1;
+    }
+  }
+
   .user-menu {
     border-bottom: 1px solid #d8dde6;
     li {
@@ -391,10 +415,38 @@ nav.navbar {
 .navbar-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 4rem;
   .navbar-icon-medlink {
     display: flex;
     flex: 5;
     margin-left: 1rem;
   }
+}
+
+.auth {
+  display: flex;
+  align-items: center;
+  .nav-link-main {
+    cursor: pointer;
+    // font-weight: bold;
+    font-family: $font-family-main;
+    font-size: 16px;
+    line-height: normal;
+    color: #000000;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 5px;
+    &:hover {
+      color: #30c3b1;
+    }
+  }
+}
+
+.navbar-container-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1
 }

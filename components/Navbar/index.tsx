@@ -1,13 +1,15 @@
 import React, { Fragment, useState } from "react";
-// import { STATE_LANGUAGE } from "../../redux/types";
 import { UserAgentProvider, UserAgent } from "@quentin-sommer/react-useragent";
 import { Menu, Dropdown, Button } from "antd";
 import { imagePath } from "../../config";
 import Link from "next/link";
 import { DownOutlined } from "@ant-design/icons";
 import useTrans from "../../common/useTrans";
+import { useRouter } from "next/router";
 var VNco = `${imagePath}/vietnam.svg`;
 var ENco = `${imagePath}/usa.svg`;
+import Image from 'next/image'
+import location from '../../public/images/location.png'
 
 type Props = {
   medicine: boolean
@@ -25,6 +27,7 @@ function Navbar(props: Props) {
 
   const { medicine, logged, name, login, product, productList } = props
   const trans = useTrans().navbar
+  const router = useRouter()
 
   const [top, setTop] = useState(0)
   const [opacity, setOpacity] = useState(true)
@@ -32,8 +35,8 @@ function Navbar(props: Props) {
   const [prevScrollpos, setPrevScrollpos] = useState(0)
   const [mobileCollapseShow, setMobileCollapseShow] = useState(false)
   const [iconMenu, setIconMenu] = useState(true)
-  const [languageName, setLanguageName] = useState("En")
-  const [urlImageLanguage, setUrlImageLanguage] = useState(ENco)
+  const [languageName, setLanguageName] = useState(router.locale.toUpperCase())
+  const [urlImageLanguage, setUrlImageLanguage] = useState(router.locale === 'en' ? ENco : VNco)
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu)
@@ -71,10 +74,12 @@ function Navbar(props: Props) {
     // Router.pushRoute("/user-info");
   };
 
-  const changeValueSelectLanguege = async languageUse => {
-    // await this.props.setLanguage(languageUse);
-    // this.onClinkChangeLanguage(languageUse);
-  };
+
+  const onClinkChangeLanguage = (language: string) => {
+    setLanguageName(language.toUpperCase())
+    setUrlImageLanguage(language === 'en' ? ENco : VNco)
+    router.push(router.pathname, router.pathname, { locale: language })
+  }
 
   const userProfileMenu = () => {
     return [
@@ -115,7 +120,7 @@ function Navbar(props: Props) {
   };
 
   const renderMenuNav = () => {
-    const dataMenu = [
+    const dataMenuLandingPage = [
       {
         name: trans.pharmacy_management,
         url: "/nhathuoc"
@@ -129,9 +134,78 @@ function Navbar(props: Props) {
         url: "/muathuoc"
       }
     ];
+    const dataMenuHome = [
+      {
+        name: trans.login,
+        url: "/dangnhap"
+      },
+      {
+        name: trans.register,
+        url: "/dangky"
+      },
+    ]
+    const dataExtraMenuHome = [
+      {
+        name: trans.products,
+        url: "/muathuoc"
+      },
+      {
+        name: trans.prescriptions,
+        url: "/donthuoc"
+      },
+      {
+        name: trans.pharmacist,
+        url: "/tuvan"
+      }
+    ]
+
+    const renderListMenu = () => {
+      if (router.pathname === "/") return (
+        <div className="linkList">
+          {dataMenuHome.map((e, i) => (
+            <div
+              onClick={() => onClickLink(e.url)}
+              key={i}
+              className="item"
+            >
+              {e.name}
+            </div>
+          ))}
+        </div>
+      )
+      else return (
+        <div className="linkList">
+          {dataMenuLandingPage.map((e, i) => (
+            <div
+              onClick={() => onClickLink(e.url)}
+              key={i}
+              className="item"
+            >
+              {e.name}
+            </div>
+          ))}
+        </div>
+      )
+    }
+
+    const renderListMenuExtra = () => {
+      return (
+        <div className="linkListCategory">
+          {dataExtraMenuHome.map((e, i) => (
+            <div
+              onClick={() => onClickLink(e.url)}
+              key={i}
+              className="item"
+            >
+              {e.name}
+            </div>
+          ))}
+        </div>
+      )
+    }
+
     const onClickLink = url => {
       toggleMenu();
-      // Router.pushRoute(url);
     };
     return (
       <div className={`menu-nav d-md-block d-lg-none ${openMenu && "open"}`}>
@@ -146,24 +220,13 @@ function Navbar(props: Props) {
               />
             </div>
           </div>
-          {/* {!medicine && ( */}
-          <div className="linkList">
-            {dataMenu.map((e, i) => (
-              <div
-                onClick={() => onClickLink(e.url)}
-                key={i}
-                className="item"
-              >
-                {e.name}
-              </div>
-            ))}
-          </div>
-          {/* )} */}
+          {renderListMenu()}
           {medicine && <div className="user-menu">{renderUserNav()}</div>}
           <div className="p-l d-flex align-items-center">
             {renderCart()}
             {renderLanguage()}
           </div>
+          {router.pathname === "/" && renderListMenuExtra()}
         </div>
       </div>
     );
@@ -182,31 +245,23 @@ function Navbar(props: Props) {
           <DownOutlined />
         </Button>
       </Dropdown>
-    );
-  };
-
-  const renderIconMenu = () => {
-    if (iconMenu) {
-      return <span className="fas fa-bars" />;
-    } else {
-      return <span className="fas fa-times" />;
-    }
-  };
+    )
+  }
 
   const renderMenuLanguage = () => (
     <Menu>
-      <Menu.Item key="1" onClick={() => this.onClinkChangeLanguage("vi")}>
-        <img width="20px" src={VNco} /> Vi
+      <Menu.Item key="1" onClick={() => onClinkChangeLanguage("vi")}>
+        <img width="20px" src={VNco} /> VI
       </Menu.Item>
-      <Menu.Item key="2" onClick={() => this.onClinkChangeLanguage("en")}>
-        <img width="20px" src={ENco} /> En
+      <Menu.Item key="2" onClick={() => onClinkChangeLanguage("en")}>
+        <img width="20px" src={ENco} /> EN
       </Menu.Item>
     </Menu>
   );
 
   const renderCart = () => {
     return (
-      medicine && (
+      !medicine && (
         <Link href="cart">
           <a className="nav-link" aria-haspopup="true" aria-expanded="false">
             <div className="position-relative">
@@ -305,82 +360,161 @@ function Navbar(props: Props) {
     );
   };
 
+  const renderListMenuLandingPageWeb = () => (
+    <Fragment>
+      <li className="nav-item">
+        <Link href="https://nhathuoc.medlink.vn">
+          <a className="nav-link">
+            {trans.pharmacy_management}
+          </a>
+        </Link>
+      </li>
+      <li className="nav-item user-profile icon-item badge-show">
+        <Link href="/congtyduoc">
+          <a
+            className="nav-link"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            {trans.company}
+          </a>
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link href="/muathuoc">
+          <a className="nav-link">
+            {trans.medicine}
+          </a>
+        </Link>
+      </li>
+    </Fragment>
+  )
+  const renderListMenuMainWeb = () => (
+    <div className="nav-item user-profile icon-item badge-show auth">
+      <Link href="/congtyduoc">
+        <a
+          className="nav-link-main"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          {trans.login}
+        </a>
+      </Link>
+      <span>|</span>
+      <Link href="/congtyduoc">
+        <a
+          className="nav-link-main"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          {trans.register}
+        </a>
+      </Link>
+    </div>
+  )
+
   return (
     <nav
       className={` fixed-top navbar-expand-lg navbar-light navbar ${opacity && "opacity"} `}
       style={{ top }}
     >
-      <div className="container navbar-container">
-        <div className="d-flex align-items-center logoBox navbar-icon-medlink" >
-          <Link href="/">
-            <UserAgentProvider ua={typeof window === "undefined" ? "" : window.navigator.userAgent}>
-              <UserAgent computer>
-                <Link href="/">
-                  <img
-                    src={`${imagePath}/medlink-logo.png`}
-                    alt="Medlink logo"
-                    srcSet={`${imagePath}/medlink-logo@2x.png 2x, ${imagePath}/medlink-logo@3x.png 3x`}
-                  />
-                </Link>
-              </UserAgent>
-              <UserAgent mobile>
-                <Link href="/">
-                  <img
-                    src={`${imagePath}/medlink-logo.png`}
-                    alt="Medlink logo"
-                  />
-                </Link>
-              </UserAgent>
-            </UserAgentProvider>
-          </Link>
-          {/* <div className="d-md-block d-lg-none text-logo test">Medlink</div> */}
+      <div className="navbar-container-main">
+        <div className="navbar-container">
+          <div className="d-flex align-items-center logoBox navbar-icon-medlink" >
+            <Link href="/">
+              <UserAgentProvider ua={typeof window === "undefined" ? "" : window.navigator.userAgent}>
+                <UserAgent computer>
+                  <Link href="/">
+                    <img
+                      src={`${imagePath}/medlink-logo.png`}
+                      alt="Medlink logo"
+                      srcSet={`${imagePath}/medlink-logo@2x.png 2x, ${imagePath}/medlink-logo@3x.png 3x`}
+                    />
+                  </Link>
+                </UserAgent>
+                <UserAgent mobile>
+                  <Link href="/">
+                    <img
+                      src={`${imagePath}/medlink-logo.png`}
+                      alt="Medlink logo"
+                    />
+                  </Link>
+                </UserAgent>
+              </UserAgentProvider>
+            </Link>
+            {/* <div className="d-md-block d-lg-none text-logo test">Medlink</div> */}
+          </div>
+          <div className="d-md-block d-lg-none">
+            <img
+              src={`${imagePath}/ic_menu.png`}
+              className="icon-menu"
+              onClick={toggleMenu}
+            />
+          </div>
+          <div className="collapse navbar-collapse list" id="navbarResponsive">
+            <ul className="navbar-nav ml-auto" style={{ paddingRight: 30 }}>
+              {router.pathname === "/" ? renderListMenuMainWeb() : renderListMenuLandingPageWeb()}
+              {renderUserNav()}
+              <li className="nav-item  user-profile icon-item badge-show">
+                {renderCart()}
+              </li>
+            </ul>
+            {renderLanguage()}
+          </div>
+          {renderMenuNav()}
         </div>
-        <div className="d-md-block d-lg-none">
-          <img
-            src={`${imagePath}/ic_menu.png`}
-            className="icon-menu"
-            onClick={toggleMenu}
-          />
-        </div>
-        <div className="collapse navbar-collapse list testt" id="navbarResponsive">
-          <ul className="navbar-nav ml-auto" style={{ paddingRight: 30 }}>
-            <Fragment>
-              <li className="nav-item">
-                <Link href="https://nhathuoc.medlink.vn">
-                  <a className="nav-link">
-                    {trans.pharmacy_management}
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item user-profile icon-item badge-show">
-                <Link href="/congtyduoc">
-                  <a
-                    className="nav-link"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    {trans.company}
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/muathuoc">
-                  <a className="nav-link">
-                    {trans.medicine}
-                  </a>
-                </Link>
-              </li>
-            </Fragment>
-            {renderUserNav()}
-            <li className="nav-item  user-profile icon-item badge-show">
-              {renderCart()}
-            </li>
-          </ul>
-          {renderLanguage()}
+
+        <div className="collapse navbar-collapse list header-extra-container" id="navbarResponsive">
+          <div className="left-menu">
+            <Link href="/muathuoc">
+              <a
+                className="nav-link-extra"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                {trans.products}
+              </a>
+            </Link>
+            <Link href="/tuvan">
+              <a
+                className="nav-link-extra"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                {trans.pharmacist}
+              </a>
+            </Link>
+            <Link href="/donthuoc">
+              <a
+                className="nav-link-extra"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                {trans.prescriptions}
+              </a>
+            </Link>
+          </div>
+          <div className="right-menu">
+            <Link href="/map">
+              <a
+                className="nav-link-extra"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <div className="nav-link-extra-text"> {trans.near_pharmacy} </div>
+                <Image
+                  src={location}
+                  alt="Picture of the author"
+                  width={22}
+                  height={22}
+                />
+              </a>
+            </Link>
+          </div>
         </div>
       </div>
-      {renderMenuNav()}
     </nav>
+
   )
 }
 

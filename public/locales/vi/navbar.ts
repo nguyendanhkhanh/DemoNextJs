@@ -11,5 +11,12 @@ export const navbar = {
   recently: "Mới xem gần đây",
   language: "Ngôn ngữ",
   user_account: "Tài khoản",
-  log_out: "Đăng xuất"
+  log_out: "Đăng xuất",
+  products: "Dược phẩm",
+  prescriptions: "Gửi đơn thuốc",
+  pharmacist: "Tư vấn dược sĩ",
+  login: "Đăng nhập",
+  logout: "Đăng xuất",
+  register: "Đăng ký",
+  near_pharmacy: "Nhà thuốc gần đây"
 }

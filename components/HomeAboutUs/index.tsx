@@ -35,12 +35,18 @@ function HomeAboutUs(props) {
               src="https://www.youtube.com/embed/GbDdQsf-jI8"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowFullScreen
+              // allowFullScreen
             ></iframe>
-            <CloseOutlined 
+            {/* <CloseOutlined 
               onClick={() => setVisible(false)}
               className="icon-close-video"
-            />
+            /> */}
+                        <i
+              className="fas fa-2x fa-times"
+              onClick={() => {
+                setVisible(false);
+              }}
+            ></i>
           </div>
         </div>
       )}

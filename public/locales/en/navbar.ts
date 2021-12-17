@@ -11,5 +11,12 @@ export const navbar = {
   recently: "Recently",
   language: "Language",
   user_account: "Profile",
-  log_out: "Log out"
+  log_out: "Log out",
+  products: "Product",
+  prescriptions: "Send prescriptions",
+  pharmacist: "Advice from pharmacist",
+  login: "Login",
+  logout: "Logout",
+  register: "Register",
+  near_pharmacy: "Pharmacy around here"
 }
