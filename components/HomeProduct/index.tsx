@@ -17,13 +17,13 @@ function HomeProducts(props) {
       title: trans.title_product_2,
       content: trans.content_product_2,
       image: `${imagePath}/people2.png`,
-      url: "/congtyduoc"
+      url: "/company"
     },
     {
       title: trans.title_product_3,
       content: trans.content_product_3,
       image: `${imagePath}/people.png`,
-      url: "/muathuoc"
+      url: "/"
     }
   ];
 

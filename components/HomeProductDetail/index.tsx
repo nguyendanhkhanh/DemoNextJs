@@ -62,7 +62,7 @@ function HomeProductDetail(props: Props) {
         },
       ],
       image: `${imagePath}/img_product_detail_2.png`,
-      url: "/congtyduoc"
+      url: "/company"
     },
     {
       name: trans.BUY_ONLINE_DRUGS,
@@ -79,7 +79,7 @@ function HomeProductDetail(props: Props) {
         },
       ],
       image: `${imagePath}/img_product_detail_3.png`,
-      url: "/muathuoc"
+      url: "/"
     }
   ];
 

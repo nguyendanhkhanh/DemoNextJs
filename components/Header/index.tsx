@@ -24,7 +24,7 @@ const Header = (props: Props) => {
             />
             {/* <div className="header-extra-container">
               <div className="left-menu">
-                <Link href="/congtyduoc">
+                <Link href="/company">
                   <a
                     className="nav-link-main"
                     aria-haspopup="true"

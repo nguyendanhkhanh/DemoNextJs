@@ -54,11 +54,11 @@ const Footer = (props: Props) => {
         },
         {
           text: trans.title_product_2,
-          url: "/congtyduoc"
+          url: "/company"
         },
         {
           text: trans.title_product_3,
-          url: "/muathuoc"
+          url: "/"
         }
       ]
     },

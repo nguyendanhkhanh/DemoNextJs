@@ -127,11 +127,11 @@ function Navbar(props: Props) {
       },
       {
         name: trans.company,
-        url: "/congtyduoc"
+        url: "/company"
       },
       {
         name: trans.medicine,
-        url: "/muathuoc"
+        url: "/"
       }
     ];
     const dataMenuHome = [
@@ -147,7 +147,7 @@ function Navbar(props: Props) {
     const dataExtraMenuHome = [
       {
         name: trans.products,
-        url: "/muathuoc"
+        url: "/"
       },
       {
         name: trans.prescriptions,
@@ -370,7 +370,7 @@ function Navbar(props: Props) {
         </Link>
       </li>
       <li className="nav-item user-profile icon-item badge-show">
-        <Link href="/congtyduoc">
+        <Link href="/company">
           <a
             className="nav-link"
             aria-haspopup="true"
@@ -381,7 +381,7 @@ function Navbar(props: Props) {
         </Link>
       </li>
       <li className="nav-item">
-        <Link href="/muathuoc">
+        <Link href="/">
           <a className="nav-link">
             {trans.medicine}
           </a>
@@ -391,7 +391,7 @@ function Navbar(props: Props) {
   )
   const renderListMenuMainWeb = () => (
     <div className="nav-item user-profile icon-item badge-show auth">
-      <Link href="/congtyduoc">
+      <Link href="/login">
         <a
           className="nav-link-main"
           aria-haspopup="true"
@@ -401,7 +401,7 @@ function Navbar(props: Props) {
         </a>
       </Link>
       <span>|</span>
-      <Link href="/congtyduoc">
+      <Link href="/register">
         <a
           className="nav-link-main"
           aria-haspopup="true"
@@ -416,7 +416,7 @@ function Navbar(props: Props) {
   const renderHeaderExtraWeb = () => (
     <div className="collapse navbar-collapse list header-extra-container" id="navbarResponsive">
       <div className="left-menu">
-        <Link href="/muathuoc">
+        <Link href="/">
           <a
             className="nav-link-extra"
             aria-haspopup="true"
@@ -425,7 +425,7 @@ function Navbar(props: Props) {
             {trans.products}
           </a>
         </Link>
-        <Link href="/tuvan">
+        <Link href="/pharmacist">
           <a
             className="nav-link-extra"
             aria-haspopup="true"
@@ -434,7 +434,7 @@ function Navbar(props: Props) {
             {trans.pharmacist}
           </a>
         </Link>
-        <Link href="/donthuoc">
+        <Link href="/prescription">
           <a
             className="nav-link-extra"
             aria-haspopup="true"
